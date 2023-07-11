@@ -142,7 +142,7 @@
         <dynamics damping="1.0" friction="1.0"/>
     </joint>
 
-    <!-- camera link and joint -->
+    <!-- rgb-d camera links and joints -->
     <link name="camera">
         <pose>0 0 0 0 0 0</pose>
 
@@ -171,11 +171,19 @@
         </collision>
     </link>
 
+    <link name="camera_optical"></link>
+
     <joint type="fixed" name="camera_joint">
         <origin xyz="0.225 0 0.1" rpy="0 0 0"/>
         <child link="camera"/>
         <parent link="chassis"/>
         <axis xyz="0 1 0" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="camera_optical_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="-1.5707 0 -1.5707"/>
+        <parent link="camera"/>
+        <child link="camera_optical"/>
     </joint>
 
     <!-- hokuyo link and joint -->
